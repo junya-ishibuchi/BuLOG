@@ -1,31 +1,14 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import * as React from "react"
-import PropTypes from "prop-types"
+import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const Seo = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              twitter
-            }
-          }
-        }
-      }
-    `
-  )
+export default function Seo({
+  description = "",
+  lang = "en",
+  meta = [],
+  title,
+}: SEOProps) {
+  const { site } = useStaticQuery<QueryTypes>(SEOStaticQuery)
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
@@ -36,7 +19,7 @@ const Seo = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
         {
           name: `description`,
@@ -75,17 +58,49 @@ const Seo = ({ description, lang, meta, title }) => {
   )
 }
 
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
+// Types
+type SEOProps = {
+  description?: string
+  lang?: string
+  meta?: Meta
+  title?: string
 }
 
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+type Meta = ConcatArray<PropertyMetaObj | NameMetaObj>
+
+type PropertyMetaObj = {
+  property: string
+  content: string
 }
 
-export default Seo
+type NameMetaObj = {
+  name: string
+  content: string
+}
+
+type QueryTypes = {
+  site: {
+    siteMetadata: {
+      title: string
+      description: string
+      social: {
+        twitter: string
+      }
+    }
+  }
+}
+
+// Queries
+const SEOStaticQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+        social {
+          twitter
+        }
+      }
+    }
+  }
+`
