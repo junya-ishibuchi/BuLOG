@@ -1,14 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `BuLOG`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Bucchi`,
+      summary: `フリーランスエンジニアです。主にバックエンドやってます。`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `フリーランスエンジニアによるブログ`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `https://twitter.com/Jun8_8_8`,
+      github: `https://github.com/junya-ishibuchi`,
+      linkedin: `https://www.linkedin.com/in/junya-ishibuchi-44516a201/`,
     },
   },
   plugins: [
@@ -126,6 +128,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    `gatsby-plugin-typegen`
+    `gatsby-plugin-typegen`,
   ],
 }
