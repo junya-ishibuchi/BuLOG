@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `BuLOG`,
+    title: `bulog`,
     author: {
-      name: `Bucchi`,
+      name: `Junya Ishibuchi`,
       summary: `フリーランスエンジニアです。主にバックエンドやってます。`,
     },
     description: `フリーランスエンジニアによるブログ`,
@@ -10,7 +10,7 @@ module.exports = {
     social: {
       twitter: `https://twitter.com/Jun8_8_8`,
       github: `https://github.com/junya-ishibuchi`,
-      linkedin: `https://www.linkedin.com/in/junya-ishibuchi-44516a201/`,
+      linkedin: `https://www.linkedin.com/in/junya-ishibuchi/`,
     },
   },
   plugins: [
