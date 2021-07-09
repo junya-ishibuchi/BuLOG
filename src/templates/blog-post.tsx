@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql, PageProps } from "gatsby"
+import { Mention } from "react-twitter-widgets"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -26,11 +27,17 @@ const BlogPostTemplate: React.FC<
         <header>
           <h1 itemProp="headline">{post?.frontmatter?.title}</h1>
           <p>{post?.frontmatter?.date}</p>
+          <Mention username="Jun8_8_8" />
+          <p>お気軽にコメントください</p>
+          <hr />
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post?.html || "" }}
           itemProp="articleBody"
         />
+
+        <Mention username="Jun8_8_8" />
+        <p>お気軽にコメントください</p>
         <hr />
         <footer>
           <Bio />
@@ -77,6 +84,9 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          twitterUserId
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {
