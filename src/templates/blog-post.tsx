@@ -11,6 +11,7 @@ const BlogPostTemplate: React.FC<
 > = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site?.siteMetadata?.title || `Title`
+  const twitterUserId = data.site?.siteMetadata?.social?.twitterUserId
   const { previous, next } = data
 
   return (
@@ -27,7 +28,7 @@ const BlogPostTemplate: React.FC<
         <header>
           <h1 itemProp="headline">{post?.frontmatter?.title}</h1>
           <p>{post?.frontmatter?.date}</p>
-          <Mention username="Jun8_8_8" />
+          <Mention username={twitterUserId} />
           <p>お気軽にコメントください</p>
           <hr />
         </header>

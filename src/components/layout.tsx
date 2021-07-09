@@ -1,12 +1,26 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { WindowLocation } from "@reach/router"
+import { Follow } from "react-twitter-widgets"
 
 const Layout: React.FC<{ location: WindowLocation; title: string }> = ({
   location,
   title,
   children,
 }) => {
+  const data = useStaticQuery<GatsbyTypes.LayoutQuery>(graphql`
+    query Layout {
+      site {
+        siteMetadata {
+          social {
+            twitterUserId
+          }
+        }
+      }
+    }
+  `)
+
+  const twitterUserId = data.site.siteMetadata.social.twitterUserId
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
@@ -30,9 +44,7 @@ const Layout: React.FC<{ location: WindowLocation; title: string }> = ({
       <header className="global-header">{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <Follow username={twitterUserId} />
       </footer>
     </div>
   )
