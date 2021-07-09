@@ -54,12 +54,14 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
-  --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
-  --color-accent: #d1dce5;
+  --color-primary: #ffa466;
+  --color-text: #d1cac0;
+  --color-text-light: #b0a696;
+  --color-anchor: #00bfff;
+  --color-heading: #e5dfd3;
+  --color-heading-black: white;
+  --color-accent: #2e231a;
+  --color-background: #121212;
 }
 
 /* HTML elements */
@@ -81,6 +83,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 footer {
@@ -230,7 +233,7 @@ table thead tr th {
 /* Link */
 
 a {
-  color: var(--color-primary);
+  color: var(--color-anchor);
 }
 
 a:hover,
