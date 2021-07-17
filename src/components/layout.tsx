@@ -20,7 +20,7 @@ const Layout: React.FC<{ location: WindowLocation; title: string }> = ({
     }
   `)
 
-  const twitterUserId = data.site.siteMetadata.social.twitterUserId
+  const twitterUserId = data.site?.siteMetadata?.social?.twitterUserId || ""
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
