@@ -11,7 +11,7 @@ const BlogPostTemplate: React.FC<
 > = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site?.siteMetadata?.title || `Title`
-  const twitterUserId = data.site?.siteMetadata?.social?.twitterUserId
+  const twitterUserId = data.site?.siteMetadata?.social?.twitterUserId || ""
   const { previous, next } = data
 
   return (
